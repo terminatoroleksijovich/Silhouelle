@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Silhouelle Paris — Liposuccion & Médecine Esthétique — Paris XVI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --burgundy: #6e1a1a;
+    --burgundy-light: #8b2424;
+    --rose: #c18996;
+    --rose-light: #ddb4be;
+    --cream: #faf6f3;
+    --ivory: #f5ede8;
+    --charcoal: #1c1412;
+    --text: #3d2b2b;
+    --text-muted: #7a5f5f;
+    --white: #ffffff;
+    --gold: #c9a96e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 72px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(110,26,26,0.1);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-weight: 300; letter-spacing: .08em;
+    color: var(--burgundy); text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--rose); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    text-decoration: none; font-size: .82rem; letter-spacing: .06em;
+    color: var(--text-muted); text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--burgundy); }
+  .nav-cta {
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .tel-badge {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .85rem; font-weight: 500; color: var(--burgundy);
+    text-decoration: none;
+    border: 1px solid var(--burgundy);
+    padding: .45rem 1.1rem; border-radius: 2px;
+    transition: all .2s;
+  }
+  .tel-badge:hover { background: var(--burgundy); color: white; }
+  .btn-nav {
+    background: var(--burgundy); color: white;
+    padding: .5rem 1.4rem; border-radius: 2px;
+    font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+    text-decoration: none; transition: background .2s;
+  }
+  .btn-nav:hover { background: var(--burgundy-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--charcoal) 0%, #3d1515 50%, #6e1a1a 100%);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 120px 3rem 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(193,137,150,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,169,110,.07) 0%, transparent 50%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0; opacity: .03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  .hero-line {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, transparent, var(--rose), var(--gold), transparent);
+    opacity: .6;
+  }
+  .hero-content { position: relative; max-width: 750px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .8rem;
+    font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--rose-light); margin-bottom: 1.8rem;
+    opacity: 0; animation: fadeUp .8s .2s forwards;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--rose);
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    color: white; font-weight: 300;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .8s .4s forwards;
+  }
+  .hero h1 em { color: var(--rose); font-style: italic; }
+  .hero h1 strong { color: var(--gold); font-weight: 300; }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.7;
+    color: rgba(255,255,255,.65); max-width: 520px;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp .8s .6s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp .8s .8s forwards;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: var(--rose); color: white;
+    padding: .9rem 2rem; border-radius: 2px;
+    font-size: .88rem; letter-spacing: .06em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: all .25s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #b07080; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(193,137,150,.4); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: .6rem;
+    border: 1px solid rgba(255,255,255,.3); color: white;
+    padding: .9rem 2rem; border-radius: 2px;
+    font-size: .88rem; letter-spacing: .06em; text-transform: uppercase;
+    text-decoration: none; transition: all .25s;
+  }
+  .btn-ghost:hover { border-color: white; background: rgba(255,255,255,.08); }
+
+  .hero-stats {
+    position: absolute; right: 3rem; bottom: 80px;
+    display: flex; flex-direction: column; gap: 1.5rem;
+    opacity: 0; animation: fadeLeft .8s 1s forwards;
+  }
+  .stat-item {
+    text-align: right;
+    border-right: 2px solid var(--rose);
+    padding-right: 1rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; color: white;
+    line-height: 1;
+  }
+  .stat-label { font-size: .72rem; letter-spacing: .1em; color: rgba(255,255,255,.5); text-transform: uppercase; }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--burgundy);
+    padding: 1rem 3rem;
+    display: flex; justify-content: center; gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: .6rem;
+    font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,.8);
+  }
+  .trust-item svg { opacity: .7; }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 100px 3rem; }
+  .section-label {
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: .8rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--rose); }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1; color: var(--burgundy);
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { color: var(--rose); }
+  .section-sub {
+    font-size: 1rem; line-height: 1.7;
+    color: var(--text-muted); max-width: 540px;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: white; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px; margin-top: 4rem;
+    background: var(--ivory);
+    border: 1.5px solid var(--ivory);
+  }
+  .service-card {
+    background: white; padding: 2.5rem 2rem;
+    transition: all .3s; cursor: pointer;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    text-decoration: none; color: inherit;
+  }
+  .service-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--rose);
+    transform: scaleX(0); transition: transform .3s;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card:hover .service-arrow { transform: translateX(4px); }
+  .service-icon {
+    width: 44px; height: 44px; margin-bottom: 1.5rem;
+    background: var(--ivory); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-icon svg { color: var(--burgundy); }
+  .service-card h3 {
+    font-size: 1.3rem; color: var(--burgundy);
+    margin-bottom: .6rem; font-weight: 400;
+  }
+  .service-card p {
+    font-size: .88rem; line-height: 1.6; color: var(--text-muted);
+    flex: 1;
+  }
+  .service-link {
+    margin-top: 1.2rem; font-size: .78rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--rose);
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .service-arrow { transition: transform .3s; }
+
+  /* ─── VIBROLI FEATURE ─── */
+  .vibro-section {
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .vibro-visual {
+    background: linear-gradient(135deg, var(--charcoal), var(--burgundy));
+    min-height: 500px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 4rem;
+  }
+  .vibro-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(193,137,150,.2) 0%, transparent 60%);
+  }
+  .vibro-big-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    color: rgba(255,255,255,.08);
+    line-height: 1; font-style: italic;
+    position: absolute; bottom: 2rem; right: 2rem;
+    text-align: right; pointer-events: none;
+  }
+  .vibro-badge {
+    background: var(--rose);
+    color: white; padding: 1.5rem 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-style: italic;
+    max-width: 260px; text-align: center;
+    line-height: 1.4; position: relative; z-index: 1;
+  }
+  .vibro-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .vibro-points { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .vibro-point {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .vibro-point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; color: var(--rose); line-height: 1;
+    min-width: 32px; font-style: italic;
+  }
+  .vibro-point-text h4 { font-size: .95rem; font-weight: 500; color: var(--burgundy); margin-bottom: .2rem; }
+  .vibro-point-text p { font-size: .85rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── WHY US ─── */
+  .why-section { background: white; }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem; margin-top: 4rem;
+  }
+  .why-card {
+    padding: 2rem; border: 1px solid var(--ivory);
+    border-radius: 1px; transition: border-color .3s;
+  }
+  .why-card:hover { border-color: var(--rose-light); }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; color: var(--ivory);
+    font-weight: 300; line-height: 1;
+    margin-bottom: .5rem;
+  }
+  .why-card h4 { font-size: 1rem; font-weight: 500; color: var(--burgundy); margin-bottom: .5rem; }
+  .why-card p { font-size: .85rem; line-height: 1.6; color: var(--text-muted); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-section { background: var(--burgundy); padding: 100px 3rem; }
+  .testimonials-section .section-label { color: var(--rose-light); }
+  .testimonials-section .section-label::before { background: var(--rose-light); }
+  .testimonials-section .section-title { color: white; }
+  .testimonials-track {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin-top: 4rem;
+  }
+  .testimonial-card {
+    background: rgba(255,255,255,.06); padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,.1);
+    transition: border-color .3s;
+  }
+  .testimonial-card:hover { border-color: rgba(193,137,150,.5); }
+  .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: .1em; margin-bottom: 1rem; }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: rgba(255,255,255,.85); line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author { font-size: .8rem; color: var(--rose-light); letter-spacing: .08em; }
+
+  /* ─── BOOKING / CONTACT ─── */
+  .booking-section {
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .booking-info { padding: 80px 4rem; background: var(--ivory); display: flex; flex-direction: column; justify-content: center; }
+  .booking-info .section-title { margin-bottom: 2rem; }
+  .contact-detail {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .contact-icon {
+    width: 36px; height: 36px; background: var(--rose);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .contact-icon svg { color: white; }
+  .contact-detail-text strong { display: block; font-size: .85rem; color: var(--burgundy); margin-bottom: .1rem; }
+  .contact-detail-text span { font-size: .88rem; color: var(--text-muted); }
+  .contact-detail-text a { color: var(--text-muted); text-decoration: none; }
+  .contact-detail-text a:hover { color: var(--burgundy); }
+
+  .booking-form { padding: 80px 4rem; background: white; display: flex; flex-direction: column; justify-content: center; }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; color: var(--burgundy); margin-bottom: 2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: .73rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; border: 1px solid #e8d9d9;
+    border-radius: 2px; padding: .7rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: .9rem;
+    color: var(--text); background: var(--cream);
+    outline: none; transition: border-color .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--rose); background: white; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .btn-form {
+    width: 100%; background: var(--burgundy); color: white;
+    border: none; padding: 1rem; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem; letter-spacing: .1em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s; margin-top: .5rem;
+  }
+  .btn-form:hover { background: var(--burgundy-light); }
+  .form-note { font-size: .74rem; color: var(--text-muted); margin-top: .8rem; text-align: center; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    padding: 60px 3rem 40px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand .nav-logo { color: white; display: block; margin-bottom: 1rem; }
+  .footer-brand p { font-size: .85rem; color: rgba(255,255,255,.4); line-height: 1.6; }
+  .footer-col h5 {
+    font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .5rem; }
+  .footer-col ul li a {
+    font-size: .83rem; color: rgba(255,255,255,.4);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { font-size: .78rem; color: rgba(255,255,255,.3); }
+  .footer-bottom a { color: rgba(255,255,255,.3); text-decoration: none; }
+  .footer-bottom a:hover { color: rgba(255,255,255,.6); }
+
+  /* ─── FLOATING CTA ─── */
+  .float-cta {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+    background: var(--rose); color: white;
+    padding: .9rem 1.8rem; border-radius: 30px;
+    font-size: .83rem; letter-spacing: .06em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    box-shadow: 0 8px 32px rgba(193,137,150,.45);
+    transition: all .25s;
+    animation: floatIn .6s 1.5s backwards;
+  }
+  .float-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(193,137,150,.55); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: scale(.9) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity .7s, transform .7s;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── MOBILE ─── */
+  /* ─── HAMBURGER BUTTON ─── */
+  .nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+    z-index: 200;
+  }
+  .nav-burger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--burgundy); border-radius: 2px;
+    transition: all .3s cubic-bezier(.4,0,.2,1);
+    transform-origin: center;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE DRAWER ─── */
+  .mobile-drawer {
+    display: none;
+    position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    background: white; z-index: 99;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+  .mobile-drawer a {
+    display: block; padding: 1rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300;
+    color: var(--burgundy); text-decoration: none;
+    border-bottom: 1px solid var(--ivory);
+    transition: color .2s;
+  }
+  .mobile-drawer a:hover { color: var(--rose); }
+  .mobile-drawer .drawer-tel {
+    margin-top: 2rem;
+    display: flex; align-items: center; gap: .8rem;
+    background: var(--burgundy); color: white;
+    padding: 1rem 1.5rem; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem; font-weight: 500;
+    text-decoration: none; justify-content: center;
+  }
+  .mobile-drawer .drawer-cta {
+    margin-top: 1rem;
+    display: block; text-align: center;
+    background: var(--rose); color: white;
+    padding: 1rem 1.5rem; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem; letter-spacing: .06em; text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  /* ─── TABLET ─── */
+  @media (max-width: 1024px) {
+    .hero-stats { right: 1.5rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .testimonials-track { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    /* Nav */
+    nav { padding: 0 1.2rem; height: 64px; }
+    .nav-links { display: none; }
+    .nav-cta .btn-nav { display: none; }
+    .nav-cta .tel-badge { display: none; }
+    .nav-burger { display: flex; }
+    .mobile-drawer { display: flex; top: 64px; }
+
+    /* Sections */
+    section { padding: 56px 1.2rem; }
+    .section-title { font-size: 2rem; }
+
+    /* Hero */
+    .hero {
+      min-height: 100svh;
+      padding: 90px 1.2rem 120px;
+      align-items: flex-start;
+    }
+    .hero h1 { font-size: 2.8rem; line-height: 1.08; }
+    .hero-sub { font-size: .95rem; }
+    .hero-stats { display: none; }
+    .hero-actions {
+      flex-direction: column; gap: .8rem;
+    }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-ghost {
+      width: 100%; text-align: center;
+      justify-content: center;
+      padding: 1rem 1.5rem; font-size: .9rem;
+    }
+
+    /* Trust bar */
+    .trust-bar {
+      padding: .8rem 1.2rem;
+      gap: 0;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .trust-item {
+      padding: .35rem 0;
+      font-size: .75rem;
+    }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr; gap: 0; }
+    .service-card { padding: 1.6rem 1.2rem; }
+
+    /* Vibroli */
+    .vibro-section { grid-template-columns: 1fr; }
+    .vibro-visual { min-height: 200px; padding: 2.5rem 1.5rem; }
+    .vibro-big-text { font-size: 3rem; }
+    .vibro-content { padding: 2.5rem 1.2rem; }
+    .vibro-points { gap: 1rem; }
+
+    /* Why */
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .why-card { padding: 1.2rem; }
+    .why-num { font-size: 2.5rem; }
+
+    /* Testimonials */
+    .testimonials-section { padding: 56px 1.2rem; }
+    .testimonials-track {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .testimonial-card { padding: 1.8rem 1.5rem; }
+
+    /* Booking */
+    .booking-section { grid-template-columns: 1fr; }
+    .booking-info { padding: 3rem 1.2rem; }
+    .booking-form { padding: 2.5rem 1.2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px; /* prevents iOS zoom */
+      padding: .85rem 1rem;
+    }
+    .btn-form { padding: 1.1rem; font-size: .9rem; }
+
+    /* Footer */
+    footer { padding: 48px 1.2rem 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: .8rem; }
+    .footer-bottom div { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* Floating CTA — becomes bottom bar on mobile */
+    .float-cta {
+      bottom: 0; right: 0; left: 0;
+      border-radius: 0;
+      text-align: center;
+      padding: 1.1rem;
+      font-size: .88rem;
+    }
+
+    /* Extra bottom padding so content clears the bar */
+    footer { padding-bottom: 80px; }
+  }
+
+  /* ─── SMALL PHONES ─── */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 2.2rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .nav-logo { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#contact" class="float-cta">Prendre rendez-vous →</a>
+
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Silhou<span>elle</span></a>
+  <div class="nav-links">
+    <a href="#services">Traitements</a>
+    <a href="#vibro">Vibroliposculpture</a>
+    <a href="#pourquoi">Pourquoi nous</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:+33100000000" class="tel-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 6.5 19.79 19.79 0 01.79 2C.78 1 1.6 0 2.73 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.07 6.07l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      01 16 34 90 78
+    </a>
+    <a href="#contact" class="btn-nav">Consultation</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="drawer">
+  <a href="#services" onclick="closeDrawer()">Traitements</a>
+  <a href="#vibro" onclick="closeDrawer()">Vibroliposculpture</a>
+  <a href="#pourquoi" onclick="closeDrawer()">Pourquoi nous</a>
+  <a href="#contact" onclick="closeDrawer()">Contact</a>
+  <a href="tel:+33100000000" class="drawer-tel">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 6.5 19.79 19.79 0 01.79 2C.78 1 1.6 0 2.73 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.07 6.07l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    01 00 00 00 00
+  </a>
+  <a href="#contact" class="drawer-cta" onclick="closeDrawer()">Prendre rendez-vous →</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Paris XVI · Quartier de la Muette</div>
+    <h1>L'art de<br/><em>redessiner</em><br/>votre <strong>silhouette</strong></h1>
+    <p class="hero-sub">Pionnier de la Vibroliposculpture à Paris, le centre Silhouelle réunit expertise médicale et technologie de pointe pour des résultats naturels et durables.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Prendre rendez-vous
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn-ghost">Découvrir nos traitements</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">+5 000</div>
+      <div class="stat-label">patients satisfaits</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">ans d'expertise</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Paris XVI</div>
+      <div class="stat-label">Quartier de la Muette</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Médecins certifiés
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Vibroliposculpture exclusive
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Publications scientifiques
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Résultats avant/après
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Consultation personnalisée
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Nos traitements</div>
+      <h2 class="section-title">Une expertise complète<br/>pour chaque <em>objectif</em></h2>
+      <p class="section-sub">De la liposuccion à la médecine esthétique, chaque traitement est adapté à votre morphologie et vos attentes.</p>
+    </div>
+    <div class="services-grid reveal">
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a5 5 0 100 10 5 5 0 000-10zM2 21a10 10 0 0120 0"/></svg></div>
+        <h3>Liposuccion</h3>
+        <p>Vibroliposculpture — l'ultime évolution. Ventre, cuisses, bras, hanches, menton et plus encore.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2 1.8-4 4-4s4 2 4 4"/></svg></div>
+        <h3>Liposuccion du ventre</h3>
+        <p>Retrouvez un ventre plat et tonique. Intervention précise avec résultats naturels et durables.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3>Culotte de cheval</h3>
+        <p>Traitement ciblé des zones rebelles. Résultats visibles dès les premières semaines.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Augmentation mammaire</h3>
+        <p>Prothèses mammaires de haute qualité. Consultation approfondie et suivi post-opératoire personnalisé.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Injections & Botox</h3>
+        <p>Lutte contre les rides et relâchement cutané. Botox, acide hyaluronique, fils de contention.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3>Lipofilling</h3>
+        <p>Transferт de graisse autologue pour un galbe naturel. Idéal pour les fesses et le visage.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>Lipolyse laser</h3>
+        <p>Technologie laser de dernière génération pour cibler les adiposités localisées sans chirurgie.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+        <h3>Médecine esthétique</h3>
+        <p>Rajeunissement global, épilation laser, radiofrequence, LED. Votre beauté sous toutes ses formes.</p>
+        <div class="service-link">En savoir plus <span class="service-arrow">→</span></div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Tarifs & Financement</h3>
+        <p>Transparence totale sur les prix. Consultez nos tarifs ou demandez un devis personnalisé en ligne.</p>
+        <div class="service-link">Voir les tarifs <span class="service-arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="vibro-section" id="vibro">
+  <div class="vibro-visual reveal">
+    <div class="vibro-badge">
+      "L'ultime évolution de la liposuccion"
+    </div>
+    <div class="vibro-big-text">Vibro<br/>lipo<br/>sculpture</div>
+  </div>
+  <div class="vibro-content reveal">
+    <div class="section-label">Notre expertise exclusive</div>
+    <h2 class="section-title">La <em>Vibroliposculpture</em><br/>— pourquoi c'est différent</h2>
+    <p class="section-sub">Développée et perfectionnée par nos médecins, cette technique représente le summum de la liposuccion moderne.</p>
+    <div class="vibro-points">
+      <div class="vibro-point">
+        <div class="vibro-point-num">01</div>
+        <div class="vibro-point-text">
+          <h4>Précision inégalée</h4>
+          <p>La vibration mécanique permet une modélisation ultra-précise, zone par zone, pour un résultat sculpté.</p>
+        </div>
+      </div>
+      <div class="vibro-point">
+        <div class="vibro-point-num">02</div>
+        <div class="vibro-point-text">
+          <h4>Moins traumatisant</h4>
+          <p>La technique réduit les hématomes et l'œdème post-opératoire. Récupération plus rapide et moins douloureuse.</p>
+        </div>
+      </div>
+      <div class="vibro-point">
+        <div class="vibro-point-num">03</div>
+        <div class="vibro-point-text">
+          <h4>Validée scientifiquement</h4>
+          <p>Nos publications dans des revues médicales internationales attestent de l'efficacité et de la sécurité du procédé.</p>
+        </div>
+      </div>
+      <div class="vibro-point">
+        <div class="vibro-point-num">04</div>
+        <div class="vibro-point-text">
+          <h4>Résultats durables</h4>
+          <p>Élimination définitive des cellules graisseuses ciblées, pour une silhouette remodelée qui dure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="why-section" id="pourquoi">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Pourquoi Silhouelle</div>
+      <h2 class="section-title">Ce qui fait<br/>notre <em>différence</em></h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h4>Expertise unique à Paris</h4>
+        <p>Pionniers de la Vibroliposculpture, nos médecins ont formé des praticiens dans toute l'Europe.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h4>Localisation premium</h4>
+        <p>Au cœur du XVIème arrondissement, quartier de la Muette. Cadre discret, élégant et facilement accessible.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h4>Suivi personnalisé</h4>
+        <p>De la consultation initiale au résultat final, vous êtes accompagné à chaque étape par notre équipe médicale.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h4>Résultats prouvés</h4>
+        <p>Des centaines de photos avant/après, des témoignages authentiques et des publications scientifiques.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Témoignages</div>
+      <h2 class="section-title" style="color:white;">Ils ont choisi <em style="color:var(--rose);">Silhouelle</em></h2>
+    </div>
+    <div class="testimonials-track reveal">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Résultat bluffant après ma liposuccion du ventre. L'équipe est professionnelle, à l'écoute, et la récupération s'est passée mieux que prévu."</div>
+        <div class="testimonial-author">— Sophie M., Paris XVI</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"J'avais peur de franchir le pas mais la consultation m'a rassurée. Six mois après ma Vibroliposculpture, je ne reconnais plus mes hanches. Merci !"</div>
+        <div class="testimonial-author">— Claire D., Neuilly-sur-Seine</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Cadre luxueux, médecins experts, résultats naturels. La liposuccion de la culotte de cheval a changé ma vie. Je recommande sans hésiter."</div>
+        <div class="testimonial-author">— Isabelle T., Paris VIII</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="booking-section" id="contact">
+  <div class="booking-info reveal">
+    <div class="section-label">Nous contacter</div>
+    <h2 class="section-title">Prendre<br/><em>rendez-vous</em></h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Notre équipe est disponible pour répondre à toutes vos questions et organiser votre consultation.</p>
+    <div class="contact-detail">
+      <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 6.5 19.79 19.79 0 01.79 2C.78 1 1.6 0 2.73 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.07 6.07l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div class="contact-detail-text">
+        <strong>Téléphone</strong>
+        <span><a href="tel:+33100000000">01 16 34 90 78</a></span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="contact-detail-text">
+        <strong>Adresse</strong>
+        <span>Rue Imaginaire, 75000 Paris<br/>Métro : Accès direct</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="contact-detail-text">
+        <strong>Horaires</strong>
+        <span>Lun – Ven : 9h00 – 19h00<br/>Sam : 9h00 – 13h00 (sur rdv)</span>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form reveal">
+    <div class="form-title">Demande de consultation gratuite</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Prénom</label>
+        <input type="text" placeholder="Marie"/>
+      </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" placeholder="Dupont"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="06 00 00 00 00"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="marie@email.fr"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Traitement souhaité</label>
+      <select>
+        <option value="">Choisir un traitement...</option>
+        <option>Liposuccion</option>
+        <option>Liposuccion du ventre</option>
+        <option>Culotte de cheval</option>
+        <option>Liposuccion des cuisses</option>
+        <option>Lipofilling / Lipofiling fesses</option>
+        <option>Augmentation mammaire</option>
+        <option>Injections / Botox</option>
+        <option>Médecine esthétique</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message (facultatif)</label>
+      <textarea placeholder="Décrivez votre demande, vos questions..."></textarea>
+    </div>
+    <button class="btn-form" onclick="this.textContent='✓ Message envoyé — nous vous recontactons rapidement'; this.style.background='#4a7c59';">
+      Envoyer ma demande →
+    </button>
+    <p class="form-note">🔒 Consultation confidentielle — Réponse sous 24h</p>
+  </div>
+</div>
+
+<footer>
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Silhou<span style="color:var(--rose);font-style:italic;">elle</span></a>
+        <p>Pionnier de la Vibroliposculpture à Paris depuis 30 ans. Centre de référence en liposuccion et médecine esthétique dans le XVIème arrondissement.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Traitements</h5>
+        <ul>
+          <li><a href="#">Liposuccion</a></li>
+          <li><a href="#">Liposuccion ventre</a></li>
+          <li><a href="#">Culotte de cheval</a></li>
+          <li><a href="#">Lipofilling</a></li>
+          <li><a href="#">Augmentation mammaire</a></li>
+          <li><a href="#">Botox & injections</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Informations</h5>
+        <ul>
+          <li><a href="#">Tarifs liposuccion</a></li>
+          <li><a href="#">Questions / Réponses</a></li>
+          <li><a href="#">Résultats en images</a></li>
+          <li><a href="#">Publications scientifiques</a></li>
+          <li><a href="#">Le Mag</a></li>
+          <li><a href="#">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+3310116349078">01 16 34 90 78</a></li>
+          <li><a href="#">Formulaire de contact</a></li>
+          <li><a href="#">Accès & plan</a></li>
+          <li><a href="#">Lun – Ven 9h – 19h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Silhouelle Paris — Tous droits réservés</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="#">Mentions légales</a>
+        <a href="#">Silhouelle Belgique</a>
+        <a href="#">Silhouelle UK</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger menu
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  let drawerOpen = false;
+
+  function closeDrawer() {
+    drawerOpen = false;
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () => {
+    drawerOpen = !drawerOpen;
+    burger.classList.toggle('open', drawerOpen);
+    drawer.classList.toggle('open', drawerOpen);
+    document.body.style.overflow = drawerOpen ? 'hidden' : '';
+  });
+
+  // Close drawer on outside tap
+  drawer.addEventListener('click', e => {
+    if (e.target === drawer) closeDrawer();
+  });
+
+  // Close on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeDrawer();
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
